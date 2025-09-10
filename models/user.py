@@ -3,10 +3,10 @@ from abc import ABC, abstractmethod
 import hashlib
 # Abstract base class for users
 class User(ABC):
-    def __init__(self,name : str , email : str , id : str, role : str):
+    def __init__(self,name : str , email : str , user_id : str, role : str):
         self.name = name
         self.email = email
-        self.id = id
+        self.user_id = user_id
         self._role = role
         self.__salt = secrets.token_hex(16)
         self.__password_hash = None
@@ -48,4 +48,5 @@ class Admin(User):
     def __init__(self, name: str, email: str, id: str):
         super().__init__(name, email, id, role="Admin")
     def borrow_limit(self) -> int:
+
         return float("inf")  # Admins can borrow unlimited items
